@@ -1,18 +1,26 @@
 <?php
-
-$servername = "localhost";
-$username = "root";
-$password = "";
-$database = "examensarbete";
-
-// Create connection
-$dns = mysqli_connect($servername, $username, $password, $database);
+function OpenCon()
+ {
+ $dbhost = "localhost";
+ $dbuser = "root";
+ $dbpass = "";
+ $db = "examensarbete";
+ $conn = new mysqli($dbhost, $dbuser, $dbpass,$db) or die("Connect failed: %s\n". $conn -> error);
+ 
+ return $conn;
+ }
+ 
+function CloseCon($conn)
+ {
+ $conn -> close();
+ }
+   
 
 // Check connection
-if (!$dns) {
-    die("Connection failed: " . mysqli_connect_error());
-}
-echo "Connected successfully";
+// if (!$conn) {
+//     die("Connection failed: " . mysqli_connect_error());
+// }
+// echo "Connected successfully";
 
 
 // $host		   		 = 'localhost';
@@ -34,20 +42,20 @@ echo "Connected successfully";
  * Read about different fetching styles:
  * https://www.php.net/manual/en/pdostatement.fetch.php
  */
-$options = [
-	PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Error mode
-	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Fetch style, fetching associative array
-];
+// $options = [
+// 	PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, // Error mode
+// 	PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC, // Fetch style, fetching associative array
+// ];
 
 
-// Upprätta en DB koppling
-try {
-	// Försök köra koden i try-blocket
-	$dbconnect = new PDO("mysqli:host=$servername;dbname=$database", $username, $password);
-} catch (\PDOException $e) {
-	// Catch-blocket körs om något gick fel i try-blocket
-	// echo $e->getMessage();
-	// echo $e->getCode();
-	throw new \PDOException($e->getMessage(), (int) $e->getCode());
-}
+// // Upprätta en DB koppling
+// try {
+// 	// Försök köra koden i try-blocket
+// 	$dbconnect = new PDO("mysql:host=localhost;dbname=database;port=3306","root","");
+// } catch (\PDOException $e) {
+// 	// Catch-blocket körs om något gick fel i try-blocket
+// 	// echo $e->getMessage();
+// 	// echo $e->getCode();
+// 	throw new \PDOException($e->getMessage(), (int) $e->getCode());
+// }
 

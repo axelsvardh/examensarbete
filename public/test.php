@@ -1,11 +1,12 @@
 <?php
-require('../src/config.php');
+include '../src/dbconnect.php';
 $conn = OpenCon();
 echo "Connected Successfully";
 CloseCon($conn);
-error_reporting(-1);
 echo "Bulle med bulle";
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -17,4 +18,3 @@ echo "Bulle med bulle";
   <p>hejehejehej</p>
 </body>
 </html>
-
