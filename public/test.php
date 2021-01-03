@@ -1,11 +1,15 @@
 <?php
-include '../src/dbconnect.php';
-$conn = OpenCon();
-echo "Connected Successfully";
-CloseCon($conn);
-echo "Bulle med bulle";
-?>
+require '../src/dbconnect.php';
 
+try {					
+$first_name  = '';
+$query = "SELECT * FROM users ";
+$stmt = $conn->query($query);
+$users = $stmt->fetchall();
+}   catch (\PDOException $e) {
+throw new \PDOException($e->getMessage(), (int) $e->getCode());
+}
+?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,5 +20,18 @@ echo "Bulle med bulle";
 </head>
 <body>
   <p>hejehejehej</p>
+  <table style='border: solid 1px black;'>
+  <tr><th>Id</th><th>Firstname</th><th>Lastname</th></tr>
+  <?php foreach ($users as $key => $user) { ?>
+   
+  <td style='width:150px;border:1px solid black;'><?=($user['id'])?></td>
+  <td style='width:150px;border:1px solid black;'><?=($user['first_name'])?></td>
+  <td style='width:150px;border:1px solid black;'><?=($user['last_name'])?></td>
+  <br>
+  <?php } ?>
+  <tr>
+  <tr>
+  
+  </table>
 </body>
 </html>
