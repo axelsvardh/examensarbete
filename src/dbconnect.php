@@ -1,10 +1,7 @@
-
-
-
- <?php
+<?php
 $servername = "localhost";
 $username = "root";
-$password = "";
+$password = "1234";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=examensarbete", $username, $password);
