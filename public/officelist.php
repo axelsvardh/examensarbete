@@ -1,5 +1,14 @@
 <?php
-include '../layout/bottomnav.php'
+include '../layout/bottomnav.php';
+require '../src/dbconnect.php';
+
+try {
+  $query = "SELECT * FROM offices";
+  $stmt = $conn->query($query);
+  $offices = $stmt->fetchall();
+  }   catch (\PDOException $e) {
+  throw new \PDOException($e->getMessage(), (int) $e->getCode());
+  }
 ?>
 
 
@@ -10,16 +19,17 @@ include '../layout/bottomnav.php'
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/officelist.css">
-  <title>bottom nav</title>
+  <title>Office list</title>
 </head>
 <body>
+<?php foreach ($offices as $key => $office) { ?>
 <div id="officecard" class="d-flex justify-content-center justify-content-lg-between m-4">
 <div class="card shadow" style="width: 18rem;">
-  <img class="card-img-top" src="https://i0.wp.com/pay2me.blog/wp-content/uploads/2018/09/coworking-spaces-i-stockholm-norrsken.jpg?resize=1200%2C801&ssl=1" alt="Norrsken House Stockholm">
+  <img class="card-img-top" src="<?=htmlentities($office['office_img'])?>" alt="">
   <div class="card-body">
-    <h5 class="card-title">Norrsken House Stockholm</h5>
-    <p class="card-text">Norrsken House Stockholm offers hot desks, launchpad zone dedicated desks, and private office spaces. We accept applications from all kinds of businesses, not only Impact or 
-tech companies.</p>
+    <h5 class="card-title"><?=htmlentities($office['office_name'])?></h5>
+    <p class="card-text"><?=htmlentities($office['description'])?></p>
+
 <div class="d-flex justify-content-between">
     <a id="cardnav" href="#" class="btn btn-primary m-2">Book</a>
     <button class="heartcard"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
@@ -27,6 +37,7 @@ tech companies.</p>
 </svg></button>
 </div>
   </div>
+  <?php } ?>
 </div>
 </div>
 </body>
