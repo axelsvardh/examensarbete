@@ -17,3 +17,13 @@
   border-radius: 100px;
   right: 10;
 }
+
+/* GOOGLE MAPS CSS */
+
+#map {
+  height: 100%;
+}
+
+.pac-input {
+  background-color: aqua;
+}
