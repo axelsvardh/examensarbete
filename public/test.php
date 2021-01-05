@@ -55,12 +55,6 @@ throw new \PDOException($e->getMessage(), (int) $e->getCode());
 
 
     // //   addMarker({lat:${office_street},lng:18.064343521174912})
-    // //   addMarker({lat:59.34150268741652,lng:18.064343521174912})
-    // //   addMarker({lat:59.34150268741652,lng:18.064343521174912})
-    // //   addMarker({lat:59.34150268741652,lng:18.064343521174912})
-    // //   addMarker({lat:59.34150268741652,lng:18.064343521174912})
-    // //   addMarker({lat:59.34150268741652,lng:18.064343521174912})
-    // //   addMarker({lat:59.34150268741652,lng:18.064343521174912})
 
     // //   function addMarker(coords){
     // //   var marker = new google.maps.Marker({
