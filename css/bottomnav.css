@@ -3,3 +3,7 @@
   background-color: #f8f9fa;
   font-size: 2em;
 }
+
+#bottomnavbar {
+  margin-bottom: -200px !important;
+}
