@@ -7,15 +7,26 @@ require('dbconnect.php');
 
 // Turn on/off error reporting
 error_reporting(-1);
+error_reporting(E_ALL);
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
 
 // define('ROOT_PATH', '..' . __DIR__ . '/'); // path to 'my-page-3/'
 // define('SRC_PATH',  __DIR__ . '/'); // path to 'my-page-3/src/'
 
 try {					
-    $first_name  = '';
     $query = "SELECT * FROM offices ";
     $stmt = $conn->query($query);
     $offices = $stmt->fetchall();
+    }   catch (\PDOException $e) {
+    throw new \PDOException($e->getMessage(), (int) $e->getCode());
+    }
+
+    try {					
+    $query = "SELECT * FROM office_specs ";
+    $stmt = $conn->query($query);
+    $office_specs = $stmt->fetchall();
     }   catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }
@@ -23,92 +34,9 @@ try {
 
 
 
- <script>
 
-function geocode(e){
-      e.preventDefault();
-      // call geocode
-      var officeArray = array();
-      <?php foreach ($offices as $key => $office) { ?>
-       officeArray[] = "<?=($office['street'])?>";
-      axios.get('https://maps.googleapis.com/maps/api/geocode/json',{
-        params:{
-          address: officeArray[$key], 
-        //   city: officeCity,
-          key: 'AIzaSyDLxvMUJc1j9h0hVAFB0A5K2B3KMk_PSA0'
-        }
-      })
-      
-       <?php } ?> 
-      .then(function(response){
-        console.log(response);
 
-        var lat = response.data.results[0].geometry.location.lat;
-	    var lng = response.data.results[0].geometry.location.lng;
-			// 	var geometryOutput = `
-			// 		<ul class="list-group">
-			// 			<li class="list-group-item">${lat}</li>
-			// 		</ul>
-			// 		<ul class="list-group">
-			// 			<li class="list-group-item">${lng}</li>
-			// 		</ul>
-			// 	`;
-
-      // document.getElementById('geometry').innerHTML = geometryOutput;
-
-      console.log(lat);
-
-  var markers = [
-        {
-          coords:{lat:lat,lng:lng},
-          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-          content:'<h4>Norrsken</h4>'
-        },
-        {
-          coords:{lat:42.8584,lng:-70.9300},
-          content:'<h1>Amesbury MA</h1>'
-        },
-        {
-          coords:{lat:42.7762,lng:-71.0773}
-        }
-      ];
-
-  for(var i = 0;i < markers.length;i++){
-        // Add marker
-        addMarker(markers[i]);
-      }
-
-      // Add Marker Function
-      function addMarker(props){
-        var marker = new google.maps.Marker({
-          position:props.coords,
-          map:map,
-          //icon:props.iconImage
-        });
-
-        // Check for customicon
-        if(props.iconImage){
-          // Set icon image
-          marker.setIcon(props.iconImage);
-        }
-
-        // Check content
-        if(props.content){
-          var infoWindow = new google.maps.InfoWindow({
-            content:props.content
-          });
-
-          marker.addListener('click', function(){
-            infoWindow.open(map, marker);
-          });
-        }
-      }
-  })
-  }
-
-</script>
-
-// <!-- // Turn on/off error reporting
+ <!-- // Turn on/off error reporting
 // error_reporting(-1);
 
 // // Start session

@@ -2,15 +2,15 @@
 // require '../src/dbconnect.php';
 include '../src/config.php';
 
-try {					
-$first_name  = '';
-$query = "SELECT * FROM offices ";
-$stmt = $conn->query($query);
-$offices = $stmt->fetchall();
-}   catch (\PDOException $e) {
-throw new \PDOException($e->getMessage(), (int) $e->getCode());
-}
-?>
+// try {					
+// $first_name  = '';
+// $query = "SELECT * FROM offices ";
+// $stmt = $conn->query($query);
+// $offices = $stmt->fetchall();
+// }   catch (\PDOException $e) {
+// throw new \PDOException($e->getMessage(), (int) $e->getCode());
+// }
+// ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -52,6 +52,66 @@ throw new \PDOException($e->getMessage(), (int) $e->getCode());
       </tr>
     <?php } ?>
   </table>
+
+
+
+
+  <script>
+
+      <?php foreach ($office_specs as $key => $office_specs) { ?>
+       lat = "<?=($office_specs['lat'])?>";
+       lng = "<?=($office_specs['lng'])?>";
+       <?php } ?> 
+
+  var markers = [
+        {
+          coords:{lat:lat,lng:lng},
+          iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+          content:'<h4>Norrsken</h4>'
+        },
+        {
+          coords:{lat:42.8584,lng:-70.9300},
+          content:'<h1>Amesbury MA</h1>'
+        },
+        {
+          coords:{lat:42.7762,lng:-71.0773}
+        }
+      ];
+
+  for(var i = 0;i < markers.length;i++){
+        // Add marker
+        addMarker(markers[i]);
+      }
+
+      // Add Marker Function
+      function addMarker(props){
+        var marker = new google.maps.Marker({
+          position:props.coords,
+          map:map,
+          //icon:props.iconImage
+        });
+
+        // Check for customicon
+        if(props.iconImage){
+          // Set icon image
+          marker.setIcon(props.iconImage);
+        }
+
+        // Check content
+        if(props.content){
+          var infoWindow = new google.maps.InfoWindow({
+            content:props.content
+          });
+
+          marker.addListener('click', function(){
+            infoWindow.open(map, marker);
+          });
+        }
+      }
+  
+  
+
+</script>
   
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLxvMUJc1j9h0hVAFB0A5K2B3KMk_PSA0&callback=myMap&libraries=places"
     defer>
