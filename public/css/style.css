@@ -6,7 +6,7 @@
 
 .list-btn {
   position: absolute;
-  background-color: #eeeeee;
+  background-color: #eee;
   border: 1px solid #ddd;
   width: 40px;
   height: 40px;
@@ -15,15 +15,33 @@
   align-items: center;
   color: rgb(34, 34, 34);
   border-radius: 100px;
-  right: 10;
+  right: 0;
+  top: 70%;
+  margin-right: 10px;
 }
 
 /* GOOGLE MAPS CSS */
 
-#map {
-  height: 100%;
+#googleMap {
+  position: relative;
 }
 
-.pac-input {
-  background-color: aqua;
+#pac-input {
+  background-color: #fff;
+  border: none;
+  margin: 10px;
+  font-family: Roboto;
+  font-size: 16px;
+  height: 40px;
+  border-radius: 40px;
+  width: 95%;
+  background-image: url(../img/loupe.png) no-repeat scroll 7px 7px;
+  padding-left: 30px;
+}
+
+input[type='text'] {
+  width: 80%;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  box-sizing: border-box;
 }
