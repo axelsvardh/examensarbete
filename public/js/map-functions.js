@@ -2,8 +2,9 @@
 
 function myMap() {
   const map = new google.maps.Map(document.getElementById('googleMap'), {
-    center: {lat: 59.34150268741652, lng: 18.064343521174912},
-    zoom: 13,
+    center: {lat: 59.3411845, lng: 18.0646734},
+    zoom: 15,
+    mapTypeId: 'roadmap',
     disableDefaultUI: true,
     zoomControl: true,
   })
@@ -24,6 +25,11 @@ function myMap() {
     if (places.length == 0) {
       return
     }
+    // Clear out the old markers.
+    markers.forEach((marker) => {
+      marker.setMap(null)
+    })
+    markers = []
     // For each place, get the icon, name and location.
     const bounds = new google.maps.LatLngBounds()
     places.forEach((place) => {
@@ -38,16 +44,6 @@ function myMap() {
         anchor: new google.maps.Point(17, 34),
         scaledSize: new google.maps.Size(25, 25),
       }
-      // Create a marker for each place.
-      markers.push(
-        new google.maps.Marker({
-          map,
-          icon,
-          title: place.name,
-          position: place.geometry.location,
-        })
-      )
-
       if (place.geometry.viewport) {
         // Only geocodes have viewport.
         bounds.union(place.geometry.viewport)

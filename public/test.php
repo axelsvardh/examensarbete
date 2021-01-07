@@ -23,7 +23,7 @@ throw new \PDOException($e->getMessage(), (int) $e->getCode());
 </head>
 <body>
 
-<div id="map" style="width:100%;height:70%;"></div>
+<div id="dudelmap" style="width:100%;height:70%;"></div>
 
 <!-- sökfunktion form -->
 <div class="container">

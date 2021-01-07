@@ -6,7 +6,7 @@
 require('dbconnect.php');
 
 // Turn on/off error reporting
-error_reporting(-1);
+ini_set("error_reporting", E_ALL);
 
 // define('ROOT_PATH', '..' . __DIR__ . '/'); // path to 'my-page-3/'
 // define('SRC_PATH',  __DIR__ . '/'); // path to 'my-page-3/src/'
@@ -20,10 +20,7 @@ try {
     throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }
 ?>
-
-
-
- <script>
+<script>
 
 function geocode(e){
       e.preventDefault();
@@ -108,7 +105,7 @@ function geocode(e){
 
 </script>
 
-// <!-- // Turn on/off error reporting
+<!-- // Turn on/off error reporting
 // error_reporting(-1);
 
 // // Start session
