@@ -1,13 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-  <link rel="stylesheet" href="../css/bottomnav.css">
-  <title>bottom nav</title>
-</head>
-<body>
+
 <nav class="navbar navbar-light bg-light fixed-bottom">
   <form class="container-fluid justify-content-around">
   <button class="navicon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
@@ -21,5 +12,3 @@
 </svg></button>
   </form>
 </nav>
-</body>
-</html>
