@@ -1,3 +1,4 @@
+<script>
 // GOOGLE MAPS SEARCH BOX
 
 function myMap() {
@@ -53,4 +54,67 @@ function myMap() {
     })
     map.fitBounds(bounds)
   })
+
+  
+lat = [];
+  <?php foreach ($office_specs as $key => $office_specs) { ?>
+    lat = "<?=($office_specs['lat'])?>";
+    lng = "<?=($office_specs['lng'])?>";
+    <?php } ?> 
+
+    console.log(typeof parseFloat(lat))
+
+    markers = [
+      {
+        coords:{lat:parseFloat(lat),lng:parseFloat(lng)},
+        iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
+        content:'<h4>Norrsken</h4>'
+      },
+      {
+        coords:{lat:42.8584,lng:-70.9300},
+        content:'<h1>Amesbury MA</h1>'
+      },
+      {
+        coords:{lat:42.7762,lng:-71.0773}
+      }
+    ];
+
+    for(var i = 0;i < markers.length;i++){
+      // Add marker
+      addMarker(markers[i]);
+    }
+
+    // Add Marker Function
+    function addMarker(props){
+      var marker = new google.maps.Marker({
+        position:props.coords,
+        map:map,
+        //icon:props.iconImage
+      });
+
+      // Check for customicon
+      if(props.iconImage){
+        // Set icon image
+        marker.setIcon(props.iconImage);
+      }
+
+      // Check content
+      if(props.content){
+        var infoWindow = new google.maps.InfoWindow({
+          content:props.content
+        });
+
+        marker.addListener('click', function(){
+          infoWindow.open(map, marker);
+        });
+      }
+    }
+
+
+
+
 }
+
+
+
+</script>
