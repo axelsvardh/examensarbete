@@ -4,6 +4,6 @@
   font-size: 2em;
 }
 
-#bottomnavbar {
-  margin-bottom: -200px !important;
+#botnavbar {
+  display: table-column !important;
 }

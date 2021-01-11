@@ -30,7 +30,7 @@ try {
   <title>Office list</title>
 </head>
 <body>
-  
+
 <div class="headnav">
 <nav class="navbar navbar-light justify-content-around mb-4">
   <form class="form-inline d-flex">
