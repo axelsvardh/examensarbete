@@ -3,6 +3,7 @@
 body {
   font-family: 'Lato', sans-serif !important;
   text-align: justify !important;
+  padding-bottom: 65px;
 }
 .street {
   text-decoration: underline;

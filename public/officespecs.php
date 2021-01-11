@@ -31,18 +31,13 @@ try {
 </head>
 <body>
 
-<?php foreach ($offices as $key => $office) { ?>
+<?php foreach ($offices as $key => $office) {foreach ($office_specs as $key => $officespecs) ?>
   <img class="img-fluid" src="<?=htmlentities($office['office_img'])?>" alt="">
   <div class="p-4">
     <h2 class="text-center"><?=htmlentities($office['office_name'])?></h2>
     <p class="street text-center"><?=htmlentities($office['street'])?>, <?=htmlentities($office['postal_code'])?></p>
     <p class=""><?=htmlentities($office['description'])?></p>
-    </div>
-  <?php } ?>
   <hr class="m-4">
-
-  <?php foreach ($office_specs as $key => $officespecs) { ?>
-  <div class="p-4">
   <h4 class="text-center">Bekvämligheter</h4>
   <br>
     <p class="">Storlek: <?=htmlentities($officespecs['conf_kvm'])?></p>
