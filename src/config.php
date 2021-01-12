@@ -1,11 +1,11 @@
 <?php
-
+session_start();
 // Start session
 // session_start();
 
 require('dbconnect.php');
 
-session_start();
+
 
 // Turn on/off error reporting
 // ini_set("error_reporting", E_ALL);

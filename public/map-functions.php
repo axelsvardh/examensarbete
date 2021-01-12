@@ -1,3 +1,4 @@
+
 <?php
 try {
   $query = "SELECT offices.office_name, offices.office_img, offices.id, offices.description, office_specs.rating, office_specs.lat, office_specs.lng
