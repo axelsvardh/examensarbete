@@ -1,7 +1,6 @@
 <?php
   include '../src/config.php';
   include '../layout/bottomnav.php';
-  include 'map-functions.php';
 
   $first_name  = '';
   $last_name   = '';
@@ -62,8 +61,8 @@
           } catch(\PDOException $e) {
               throw new \PDOException($e->getMessage(), (int) $e->getCode());
           }
-          // header('Location: ');
-          // exit;
+          header('Location: profile.php');
+          exit;
 
           if ($result) {
               $msg = '<div class="success_msg">Ditt konto är nu skapat</div>';
@@ -81,7 +80,6 @@
   <link rel="stylesheet" href="css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/bottomnav.css">
-  <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
   <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
   <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDLxvMUJc1j9h0hVAFB0A5K2B3KMk_PSA0&callback=myMap&libraries=places"
     defer>
@@ -92,9 +90,42 @@
 <?=$msg?>
     <div class="reg-form-wrapper">
         <div class="container-reg">
-            <article class="border">
-                <form method="POST" action="#" class="form-reg">
-                    <fieldset class="fieldset-reg">
+            <form method="POST" action="#" class="form-reg">
+            <h1 class="rubrik-center mt-3">Registrera dig här</h1>
+            <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingInput" name="first_name" placeholder="name@example.com">
+                <label for="floatingInput">First name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" id="floatingPassword" name="last_name" placeholder="Password">
+                <label for="floatingPassword">Last name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+                <label for="floatingInput">Email address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="tel" class="form-control" id="floatingInput" name="phone" placeholder="name@example.com">
+                    <label for="floatingInput">Telefon</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+                <label for="floatingPassword">Password</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" id="floatingPassword" name="confirmPassword" placeholder="Password">
+                <label for="floatingPassword">Confirm password</label>
+                </div>
+                <div class="btn btn-primary">
+                    <button class="btn btn-primary" type="submit" name="register" value="Registrera">Registrera</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
+
+<!-- <fieldset class="fieldset-reg">
                         <h1 class="rubrik-center">Registrera dig här</h1>
                     
                     <div class="firstname-form">
@@ -124,12 +155,6 @@
                             <input type="password" class="text" name="confirmPassword">
                         </div>
                         <div class="submit-btn">
-                            <input type="submit" name="register" value="Registrera" class="submit-reg-btn">
+                            <input type="submit" name="register" value="Registrera">
                         </div>
-                    </fieldset>
-                </form>
-            </article>
-        </div>
-    </div>
-</body>
-</html>
+                    </fieldset> -->

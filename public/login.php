@@ -1,7 +1,6 @@
 <?php 
 include '../src/config.php';
 include '../layout/bottomnav.php';
-include 'map-functions.php';
 
     $msg = "";
     if (isset($_GET['mustLogin'])) {
@@ -49,7 +48,7 @@ include 'map-functions.php';
         // If user exists AND password is correct, will be considered true. Meaning you are logged in
         if ($user && $password === $user['password']) {
             $_SESSION['email'] = $user['email'];
-            header('Location: index.php');
+            header('Location: profile.php');
             exit;
         } else {
            // If user doesnt Exist, will be considered false
@@ -79,15 +78,35 @@ include 'map-functions.php';
 <body>
 <div class="wrapper">
     <div class="content1"> 
-        <article class="border">
             <?=$msg?>
             <div class="login">
                 <h1 class="rubrik-login">Logga in</h1>
             </div>
-                    <!-- Visa errormeddelanden -->
-                        
+                    <!-- Visa errormeddelanden -->  
             <form method="POST" action="#">
-                <div class="login-background">
+              <div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                <input name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+              </div>
+              <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">Password</label>
+                <input name="password" type="password" class="form-control" id="exampleInputPassword1">
+              </div>
+              <button type="submit" name="doLogin" class="btn btn-primary">Submit</button>
+            </form>
+    </div>
+<br>
+    <div class="content2">
+        <h1>Registera dig här</h1>
+        <form action="reg.php" method="POST">
+          <button type="submit" class="btn btn-primary">Registera</button>
+        </form>
+    </div>
+</div>
+</body>
+</html>
+<!-- <div class="login-background">
                     <div>
                         <label for="input1">E-post:</label> <br>
                         <input type="text" class="text" name="email">
@@ -101,16 +120,4 @@ include 'map-functions.php';
                     <div>
                         <input type="submit" name="doLogin" value="Login" class="loginBtn">
                     </div>
-                </div>
-            </form>
-    </div>
-    <div class="content2">
-        <article class="border">
-        <h1 class="rubrik-home-reg">Registera dig här</h1>
-        <form action="reg.php" method="POST">
-            <input type="submit" value="Registera" class="regBtn">
-        </form>
-    </div>
-</div>
-</body>
-</html>
+                </div> -->

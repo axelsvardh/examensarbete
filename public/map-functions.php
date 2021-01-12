@@ -1,7 +1,5 @@
 <script>
-<?php
-include '../map-icons-master/dist/js/map-icons.js';
-?>
+
 
 // GOOGLE MAPS SEARCH BOX
 
