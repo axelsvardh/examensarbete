@@ -1,4 +1,17 @@
-<script>
+
+<?php
+try {
+  $query = "SELECT offices.office_name, offices.office_img, offices.id, offices.description, office_specs.rating, office_specs.lat, office_specs.lng
+  FROM offices
+  INNER JOIN office_specs ON offices.id = office_specs.office_id;";
+  $stmt = $conn->query($query);
+  $office_specs = $stmt->fetchall();
+  }   catch (\PDOException $e) {
+  throw new \PDOException($e->getMessage(), (int) $e->getCode());
+  }
+?>
+
+<script type="text/javascript">
 
 
 // GOOGLE MAPS SEARCH BOX
@@ -56,12 +69,12 @@ function myMap() {
 
 
     var markers = [
-      <?php foreach ($office_specs as $key => $office_spec) { ?>
-        lat = "<?=($office_spec['lat'])?>",
-      lng = "<?=($office_spec['lng'])?>",
+      <?php foreach ($office_specs as $key => $officespecs) { ?>
+        lat = "<?=($officespecs['lat'])?>",
+        lng = "<?=($officespecs['lng'])?>",
         {
         coords:{lat:parseFloat(lat),lng:parseFloat(lng)},
-        content:'<?=($office_spec['conf_kvm'])?>'
+        content:'<?=($officespecs['office_name'])?>'
       },
       <?php } ?>
     ];
@@ -71,27 +84,28 @@ function myMap() {
       addMarker(markers[i]);
     }
     // var marker = new google.maps.Marker({
-      // position:new google.maps.LatLng(props.coords),
+      // position:new google.maps.LatLng(props.coords), 
     // Add Marker Function
+    
     function addMarker(props){
-      var marker = new mapIcons.Marker({
+      var image = 'img/office-building (2).png';
+      var marker = new google.maps.Marker({
         position:new google.maps.LatLng(props.coords),
         map:map,
         icon: {
-            path: mapIcons.shapes.MAP_PIN,
-            fillColor: '#f29a01',
-            fillOpacity: 1,
-            strokeColor: '',
-            strokeWeight: 0
-          },
-          map_icon_label: '<span class="map-icon map-icon-political"></span>'
-      });
+          url: image,
+          scaledSize: new google.maps.Size(30, 30)
+
+        }
+      }); 
 
       // Check for customicon
       // if(props.icon){
       //   // Set icon 
       //   marker.setIcon(props.icon);
       // }
+
+      
 
       // Check content
       if(props.content){
@@ -107,10 +121,42 @@ function myMap() {
     }
 
 
-
-
+    
+  const locationButton = document.createElement("button");
+  locationButton.textContent = "Visa min position";
+  locationButton.classList.add("custom-map-control-button", "btn", "btn-outline-primary", "geo-button");
+  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+  locationButton.addEventListener("click", () => {
+    // Try HTML5 geolocation.
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const pos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+          
+          map.setCenter(pos);
+        },
+        () => {
+          handleLocationError(true, infoWindow, map.getCenter());
+        }
+      );
+    } else {
+      // Browser doesn't support Geolocation
+      handleLocationError(false, infoWindow, map.getCenter());
+    }
+  });
 }
 
-
+function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+  infoWindow.setPosition(pos);
+  infoWindow.setContent(
+    browserHasGeolocation
+      ? "Error: The Geolocation service failed."
+      : "Error: Your browser doesn't support geolocation."
+  );
+  
+}
 
 </script>

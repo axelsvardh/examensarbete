@@ -3,13 +3,24 @@ include '../src/config.php';
 include '../layout/bottomnav.php';
 include 'map-functions.php';
 
+// try {
+//   $query = "SELECT * FROM office_specs";
+//   $stmt = $conn->query($query);
+//   $office_specs = $stmt->fetchall();
+//   }   catch (\PDOException $e) {
+//   throw new \PDOException($e->getMessage(), (int) $e->getCode());
+//   }
+
 try {
-  $query = "SELECT * FROM office_specs";
+  $query = "SELECT offices.office_name, offices.office_img, offices.id, offices.description, office_specs.rating, office_specs.lat, office_specs.lng
+  FROM offices
+  INNER JOIN office_specs ON offices.id = office_specs.office_id;";
   $stmt = $conn->query($query);
   $office_specs = $stmt->fetchall();
   }   catch (\PDOException $e) {
   throw new \PDOException($e->getMessage(), (int) $e->getCode());
   }
+
 ?>
 
 <!DOCTYPE html>
@@ -59,62 +70,20 @@ try {
 
 
   
-  <?php foreach ($office_specs as $key => $office_specss) { ?>
-    lat = <?=($office_specss['lat'])?>";
-    lng = "<?=($office_specss['lng'])?>";
+  <?php foreach ($office_specs as $key => $officespecs) { ?>
+    lat = <?=($officespecs['lat'])?>";
+    lng = "<?=($officespecs['lng'])?>";
+    lng = "<?=($officespecs['office_name'])?>";
     <?php } ?> 
 
+    <!-- <div id="mapholder"></div>
+      <form>
+         <input type="button" onclick="getLocation();" value="Get Location"/>
+      </form> -->
+
     
-  
-
-  <!-- <script> 
-  
     
-    var markers = [
-      {
-        coords:{lat:lat,lng:lng},
-        iconImage:'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png',
-        content:'<h4>Norrsken</h4>'
-      },
-      {
-        coords:{lat:42.8584,lng:-70.9300},
-        content:'<h1>Amesbury MA</h1>'
-      },
-      {
-        coords:{lat:42.7762,lng:-71.0773}
-      }
-    ];
 
-    for(var i = 0;i < markers.length;i++){
-      // Add marker
-      addMarker(markers[i]);
-    }
-
-    // Add Marker Function
-    function addMarker(props){
-      var marker = new google.maps.Marker({
-        position:props.coords,
-        map:map,
-        //icon:props.iconImage
-      });
-
-      // Check for customicon
-      if(props.iconImage){
-        // Set icon image
-        marker.setIcon(props.iconImage);
-      }
-
-      // Check content
-      if(props.content){
-        var infoWindow = new google.maps.InfoWindow({
-          content:props.content
-        });
-
-        marker.addListener('click', function(){
-          infoWindow.open(map, marker);
-        });
-      }
-    }
-    </script> -->
+  
   </body>
 </html>
