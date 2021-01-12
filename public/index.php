@@ -3,13 +3,24 @@ include '../src/config.php';
 include '../layout/bottomnav.php';
 include 'map-functions.php';
 
+// try {
+//   $query = "SELECT * FROM office_specs";
+//   $stmt = $conn->query($query);
+//   $office_specs = $stmt->fetchall();
+//   }   catch (\PDOException $e) {
+//   throw new \PDOException($e->getMessage(), (int) $e->getCode());
+//   }
+
 try {
-  $query = "SELECT * FROM office_specs";
+  $query = "SELECT offices.office_name, offices.office_img, offices.id, offices.description, office_specs.rating, office_specs.lat, office_specs.lng
+  FROM offices
+  INNER JOIN office_specs ON offices.id = office_specs.office_id;";
   $stmt = $conn->query($query);
   $office_specs = $stmt->fetchall();
   }   catch (\PDOException $e) {
   throw new \PDOException($e->getMessage(), (int) $e->getCode());
   }
+
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +29,6 @@ try {
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="../map-icons-master/dist/css/map-icons.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/bottomnav.css">
   <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
@@ -60,9 +70,10 @@ try {
 
 
   
-  <?php foreach ($office_specs as $key => $office_specss) { ?>
-    lat = <?=($office_specss['lat'])?>";
-    lng = "<?=($office_specss['lng'])?>";
+  <?php foreach ($office_specs as $key => $officespecs) { ?>
+    lat = <?=($officespecs['lat'])?>";
+    lng = "<?=($officespecs['lng'])?>";
+    lng = "<?=($officespecs['office_name'])?>";
     <?php } ?> 
 
     

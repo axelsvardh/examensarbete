@@ -1,7 +1,17 @@
-<script>
 <?php
-include '../map-icons-master/dist/js/map-icons.js';
+try {
+  $query = "SELECT offices.office_name, offices.office_img, offices.id, offices.description, office_specs.rating, office_specs.lat, office_specs.lng
+  FROM offices
+  INNER JOIN office_specs ON offices.id = office_specs.office_id;";
+  $stmt = $conn->query($query);
+  $office_specs = $stmt->fetchall();
+  }   catch (\PDOException $e) {
+  throw new \PDOException($e->getMessage(), (int) $e->getCode());
+  }
 ?>
+
+<script>
+
 
 // GOOGLE MAPS SEARCH BOX
 
@@ -58,12 +68,12 @@ function myMap() {
 
 
     var markers = [
-      <?php foreach ($office_specs as $key => $office_spec) { ?>
-        lat = "<?=($office_spec['lat'])?>",
-      lng = "<?=($office_spec['lng'])?>",
+      <?php foreach ($office_specs as $key => $officespecs) { ?>
+        lat = "<?=($officespecs['lat'])?>",
+        lng = "<?=($officespecs['lng'])?>",
         {
         coords:{lat:parseFloat(lat),lng:parseFloat(lng)},
-        content:'<?=($office_spec['conf_kvm'])?>'
+        content:'<?=($officespecs['office_name'])?>'
       },
       <?php } ?>
     ];
@@ -73,27 +83,28 @@ function myMap() {
       addMarker(markers[i]);
     }
     // var marker = new google.maps.Marker({
-      // position:new google.maps.LatLng(props.coords),
+      // position:new google.maps.LatLng(props.coords), 
     // Add Marker Function
+    
     function addMarker(props){
-      var marker = new mapIcons.Marker({
+      var image = 'img/office-building (2).png';
+      var marker = new google.maps.Marker({
         position:new google.maps.LatLng(props.coords),
         map:map,
         icon: {
-            path: mapIcons.shapes.MAP_PIN,
-            fillColor: '#f29a01',
-            fillOpacity: 1,
-            strokeColor: '',
-            strokeWeight: 0
-          },
-          map_icon_label: '<span class="map-icon map-icon-political"></span>'
-      });
+          url: image,
+          scaledSize: new google.maps.Size(30, 30)
+
+        }
+      }); 
 
       // Check for customicon
       // if(props.icon){
       //   // Set icon 
       //   marker.setIcon(props.icon);
       // }
+
+      
 
       // Check content
       if(props.content){
