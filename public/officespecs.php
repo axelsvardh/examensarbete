@@ -53,11 +53,11 @@ try {
   <?php foreach ($office_specs as $key => $officespecs) { ?>
   <h4 class="text-center">Bekvämligheter</h4>
   <br><div class="p-4">
-    <p class="">Storlek: <?=htmlentities($office_specs['conf_kvm'])?></p>
-    <p class=""><?=htmlentities($office_specs['conf_wifi'])?></p>
-    <p class=""><?=htmlentities($office_specs['conf_coffe'])?></p>
-    <p class="">Rumstyp: <?=htmlentities($office_specs['room_type'])?></p><br>
-    <p class="">Platser lediga: <?=htmlentities($office_specs['room_qty'])?></p>
+    <p class="">Storlek: <?=($office_specs['conf_kvm'])?></p>
+    <p class=""><?=($office_specs['conf_wifi'])?></p>
+    <p class=""><?=($office_specs['conf_coffe'])?></p>
+    <p class="">Rumstyp: <?=($office_specs['room_type'])?></p><br>
+    <p class="">Platser lediga: <?=($office_specs['room_qty'])?></p>
     <a id="cardnav" href="#" class="btn btn-primary">Boka</a>
     </div>
 </body>
