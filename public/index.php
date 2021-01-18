@@ -99,6 +99,10 @@ echo "<p>office: ".$row['office_name']."</p> ";
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/bottomnav.css">
 
+  <link rel="stylesheet" href="../css/welcome.css">
+
+
+
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
 
@@ -214,6 +218,14 @@ echo "<p>office: ".$row['office_name']."</p> ";
 
     <!-- FILTRERING -->
     
+
+    <?php 
+    include ('welcome.php')
+    ?>
+
+<script src="js/functions.js"></script>
+
+
 <!-- <script>
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
@@ -267,5 +279,6 @@ for (var i = 0; i < btns.length; i++) {
 };
 </script> -->
   
+
   </body>
 </html>
