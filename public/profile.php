@@ -1,7 +1,6 @@
 <?php
 include '../src/config.php';
 include '../layout/bottomnav.php';
-include 'map-functions.php';
 
 if (isset($_SESSION['email'])){
   try {
@@ -20,10 +19,10 @@ if (isset($_SESSION['email'])) {
     // ucfirst() turns the first letter to a capital letter, in a string
     $loggedInUsername = htmlentities(ucfirst($user['first_name'])); 
     $aboveNav = "<a href='logout.php' class='list-group-item list-group-item-action border-0'>Logga ut</a>";
-    $loggedin = 'Hitta kontoret just för dig';
+    $loggedin = "<p class='m-4'>Hitta kontoret just för dig</p>";
 } else {
-    $aboveNav = "<a href='reg.php' class='list-group-item list-group-item-action border-0'>Registrera dig</a>";
-    $loggedin = 'Logga in för att hitta ditt nästa kontor';
+    $aboveNav = "<a href='reg.php' class='btn btn-warning btn-md ms-4'>Registrera dig</a>";
+    $loggedin = "<p class='m-4'>Logga in för att hitta ditt nästa kontor</p>";
 }
 
 if (isset($_POST['doLogin'])) {
@@ -76,39 +75,51 @@ if (isset($_POST['doLogin'])) {
 </head>
 <body>
 <div class="login-container">
-<div class="text-btn-con m-4">
+<div class="text-btn-con">
 <div>
 <?php 
 if( isset($_SESSION['email']) && !empty($_SESSION['email']) )
 {
 ?>
-  <h2><b>Välkommen <?=$loggedInUsername?></b></h2>
+  <h2 class="m-4"><b>Välkommen <?=$loggedInUsername?></b></h2>
 
 <?=$loggedin?>
+
+<div class="list-group rounded-0">
+  <a href="#" class="list-group-item list-group-item-action border-0 mt-5 lol-auto border-radius-0">Settings</a>
+  <a href="#" class="list-group-item list-group-item-action border">Policy and terms</a>
+  <a href="#" class="list-group-item list-group-item-action border-bottom">Help</a>
+  <a href="#" class="list-group-item list-group-item-action border-bottom">Sekretessinställningar</a>
+  <!-- lägg reg högre upp så de syns tydligare -->
+  <?=$aboveNav?>
+</div>
 
 <?php
 }
 else
 {
 ?>
-<h2><b>Din Profil</b></h2>
+<h2 class="m-4"><b>Din Profil</b></h2>
 
 <?=$loggedin?>
 <div class="d-grid">
-  <a href="login.php" class="btn btn-primary btn-lg mt-5">Logga in</a>
+  <a href="login.php" class="btn btn-warning btn-lg m-4">Logga in</a>
 </div>
+<?=$aboveNav?>
 
-<?php
-} ?>
-</div>
-</div>
 <div class="list-group rounded-0">
   <a href="#" class="list-group-item list-group-item-action border-0 mt-5 lol-auto border-radius-0">Settings</a>
   <a href="#" class="list-group-item list-group-item-action border">Policy and terms</a>
   <a href="#" class="list-group-item list-group-item-action border-bottom">Help</a>
   <a href="#" class="list-group-item list-group-item-action border-bottom">Sekretessinställningar</a>
-  <?=$aboveNav?>
 </div>
-  
+<?php } ?>
+</div>
+</div>
+
+<form action="#" method="POST">
+      <input type="hidden" name="office_id" value="<?=$office_id['id']?>">
+      <input type="submit" name="addToCart" value="Like" class="btn btn-info btn-sm">
+</form>
 </body>
 </html>
