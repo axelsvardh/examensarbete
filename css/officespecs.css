@@ -16,9 +16,24 @@ hr {
 #cardnav {
   background-color: #f29a01;
   border-style: none;
+  width: 50%;
+  margin: auto;
 }
 
 h4,
 h2 {
   color: #f29a01 !important;
+}
+
+#wifiicon {
+  font-size: 1.6rem !important;
+}
+
+#iconcol {
+  text-align: right;
+}
+
+#officeinfo {
+  text-align: justify;
+  letter-spacing: 1px;
 }
