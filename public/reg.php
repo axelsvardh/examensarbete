@@ -116,8 +116,8 @@
                     <input type="password" class="form-control" id="floatingPassword" name="confirmPassword" placeholder="Password">
                 <label for="floatingPassword">Confirm password</label>
                 </div>
-                <div class="btn btn-primary">
-                    <button class="btn btn-primary" type="submit" name="register" value="Registrera">Registrera</button>
+                <div class="btn btn-warning">
+                    <button class="btn btn-warning" type="submit" name="register" value="Registrera">Registrera</button>
                 </div>
             </form>
         </div>
