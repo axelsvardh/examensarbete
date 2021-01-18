@@ -2,7 +2,7 @@
 include '../layout/bottomnav.php';
 require '../src/dbconnect.php';
 include '../src/config.php';
-
+include 'favs.php';
 
 try {
   $query = "SELECT * FROM offices";
@@ -21,9 +21,9 @@ try {
     }   catch (\PDOException $e) {
     throw new \PDOException($e->getMessage(), (int) $e->getCode());
     }
+
+    
 ?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,6 +31,33 @@ try {
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/officelist.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script type="text/javascript">
+console.log(user_id, office_id)
+  jQuery(document).ready(function($){
+        $('.button').on('click', function(e){
+            e.preventDefault();
+            var user_id = $(this).attr('user_id'); // Get the parameter user_id from the button
+            var office_id = $(this).attr('office_id'); // Get the parameter office_id from the button
+            var method = $(this).attr('method');  // Get the parameter method from the button
+            if (method == "Like") {
+              $(this).attr('method', 'Unlike') // Change the div method attribute to Unlike
+              $('#' + office_id).replaceWith('<img class="favicon" id="' + office_id + '" src="img/favon.jpg">') // Replace the image with the liked button
+            } else {
+             $(this).attr('method', 'Like')
+             $('#' + office_id).replaceWith('<img class="favicon" id="' + office_id + '" src="img/favoff.png">')
+            }
+            $.ajax({
+                url: 'favs.php', // Call favs.php to update the database
+                type: 'GET',
+                data: {user_id: user_id, office_id: office_id, method: method},
+                cache: false,
+                success: function(data){
+                }
+            });
+        });
+    });
+</script>
   <title>Office list</title>
 </head>
 <body>
@@ -50,6 +77,7 @@ try {
      <div class="card-body">
       <h5 class="card-title"><a class="titellink" href="officespecs.php?id=<?=$office['id']?>"><?=($office['office_name'])?></a></h5>
        <p class="card-text"><?=htmlentities($office['description'])?></p>
+       
 
 <!--- CONF ICONS START --->
 <hr>
@@ -73,11 +101,56 @@ try {
              <button class="heartcard "><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
               <path d="M8 2.748l-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
             </svg>
+            
             </button>
-        </div>
+            <?=($office['id'])?>
+
+            <?php 
+
+              function checkFavorite($user_id, $office_id, $conn) {
+                $query = "SELECT * FROM favs WHERE user_id = '". $user_id."' AND office_id = '". $office_id."'";
+                $result = $conn->query($query);
+                $numrows =  $result->rowCount();
+              if ($numrows == 0) {
+                echo "<div class = 'button' method = 'Like'  user_id = ".$user_id." office_id = ".$office_id."> <img id=".$office_id." src='img/favoff.png'> </div>";
+                }
+              else {
+                  echo  "<div class = 'button' method = 'Unlike'  user_id = ".$user_id." office_id = ".$office_id."> <img id=".$office_id." src='img/favon.jpg'> </div>";
+                }
+              }
+
+              //DECLARE OFFICE ID AND USER ID 
+              if (isset($_SESSION['email'])){
+                try {
+                $query = "SELECT * FROM users 
+                          WHERE email = :email;";
+                $stmt = $conn->prepare($query);
+                $stmt->bindvalue(':email', $_SESSION['email']);
+                $stmt->execute();
+                $user = $stmt->fetch();
+              }   catch (\PDOException $e) {
+                throw new \PDOException($e->getMessage(), (int) $e->getCode());
+                                  }}
+              if (isset($_SESSION['email'])) {
+                $user_id = ($user['id']); 
+              }   
+              // Query to Get the office ID
+                $office_id = $office['id'];
+
+                ?>
+
+                
+
+
+    <?php
+    $fav_image = checkFavorite($user_id, $office_id, $conn);
+    ?>
+    <?=$fav_image?>
+    </div>
       </div>
     </div>
-  </div>
+  </div>  
 <?php } ?>
+
 </body>
 </html>

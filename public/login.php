@@ -93,14 +93,14 @@ include '../layout/bottomnav.php';
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input name="password" type="password" class="form-control" id="exampleInputPassword1">
               </div>
-              <button type="submit" name="doLogin" class="btn btn-primary">Submit</button>
+              <button type="submit" name="doLogin" class="btn btn-warning">Submit</button>
             </form>
     </div>
 <br>
     <div class="content2">
         <h1>Registera dig här</h1>
         <form action="reg.php" method="POST">
-          <button type="submit" class="btn btn-primary">Registera</button>
+          <button type="submit" class="btn btn-warning">Registera</button>
         </form>
     </div>
 </div>
