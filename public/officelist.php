@@ -3,7 +3,6 @@ include '../layout/bottomnav.php';
 require '../src/dbconnect.php';
 include '../src/config.php';
 
-
 try {
   $query = "SELECT * FROM offices";
   $stmt = $conn->query($query);
