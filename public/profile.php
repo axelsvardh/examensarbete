@@ -117,9 +117,5 @@ else
 </div>
 </div>
 
-<form action="#" method="POST">
-      <input type="hidden" name="office_id" value="<?=$office_id['id']?>">
-      <input type="submit" name="addToCart" value="Like" class="btn btn-info btn-sm">
-</form>
 </body>
 </html>
