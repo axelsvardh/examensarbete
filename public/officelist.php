@@ -1,7 +1,7 @@
 <?php
 include '../layout/bottomnav.php';
-require '../src/dbconnect.php';
 include '../src/config.php';
+
 
 try {
   $query = "SELECT * FROM offices";
@@ -14,7 +14,7 @@ try {
   try {
     $query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id, offices.description, office_specs.conf_wifi,office_specs.conf_printer
     FROM offices
-    INNER JOIN office_specs ON offices.id = office_specs.office_id;";
+    LEFT JOIN office_specs ON offices.id = office_specs.office_id;";
     $stmt = $conn->query($query);
     $office_specs = $stmt->fetchall();
     }   catch (\PDOException $e) {
