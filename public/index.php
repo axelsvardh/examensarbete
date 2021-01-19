@@ -21,66 +21,6 @@ try {
   }   catch (\PDOException $e) {
   throw new \PDOException($e->getMessage(), (int) $e->getCode());
   }
-
-function checkFavorite($user_id, $office_id, $conn) {
-    $query = "SELECT * FROM favs WHERE user_id = '". $user_id."' AND office_id = '". $office_id."'";
-    $result = $conn->query($query);
-    $numrows =  $result->rowCount();
-  if ($numrows == 0) {
-     echo "<div class = 'button' method = 'Like'  user_id = ".$user_id." office_id = ".$office_id."> <img id=".$office_id." src='img/favoff.png'> </div>";
-    }
-  else {
-      echo  "<div class = 'button' method = 'Unlike'  user_id = ".$user_id." office_id = ".$office_id."> <img id=".$office_id." src='img/favon.jpg'> </div>";
-    }
-  }
-
-  if (isset($_SESSION['email'])){
-    try {
-    $query = "SELECT * FROM users 
-              WHERE email = :email;";
-    $stmt = $conn->prepare($query);
-    $stmt->bindvalue(':email', $_SESSION['email']);
-    $stmt->execute();
-    $user = $stmt->fetch();
-  }   catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int) $e->getCode());
-                      }}
-
-  if (isset($_SESSION['email'])) {
-    $user_id = ($user['id']); 
-  }
-
-
-  $query = "SELECT * FROM users";
-  $result = $conn->query($query);
-  $row = $result->fetch(PDO::FETCH_ASSOC);
-      
-// Query to Get the office ID
-  $query = "SELECT * FROM offices";
-  $result = $conn->query($query);
-  $row = $result->fetch(PDO::FETCH_ASSOC);
-  $office_id = $row['id'];
-echo "<p>office: ".$row['office_name']."</p> ";
-  $fav_image = checkFavorite($user_id, $office_id, $conn);
-  echo "Favorite : ".$fav_image."";
-
-
-
-    
-
-
-
-    
-//     $result = $conn->query("SELECT * FROM user WHERE name = 'Henrique'");
-//       $row = $result->fetch_assoc();
-//       $user_id = $row['id'];
-// // Query to Get the Director ID
-//       $result = $conn->query("SELECT * FROM director WHERE name = 'Donal'");
-//       $row = $result->fetch_assoc();
-//       $director_id = $row['id'];
-// echo "<p>Director: ".$row['name']."</p> ";
-//       $fav_image = checkFavorite($user_id, $director_id, $conn);
-//       echo "Favorite? : ".$fav_image."";
     
   if (isset($_GET['logout'])) {
     $msg = '<br><div class="alert alert-success">Du har loggat ut</div>';
@@ -220,7 +160,7 @@ echo "<p>office: ".$row['office_name']."</p> ";
     
 
     <?php 
-    include ('welcome.php')
+    include 'welcome.php';
     ?>
 
 <script src="js/functions.js"></script>
