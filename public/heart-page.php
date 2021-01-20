@@ -1,15 +1,14 @@
 <?php
 include '../layout/bottomnav.php';
 include '../src/config.php';
+
+
     
-    if (!isset($_SESSION['email'])) {
-	    header("location: #");
-	    }
-      
+if (isset($_SESSION['email'])) {
       try {
-      
-        $query = "SELECT * FROM users 
-                  WHERE email = :email;";
+      $query = "SELECT * FROM users 
+                WHERE email = :email;
+                ";
       $stmt = $conn->prepare($query);
       $stmt->bindvalue(':email', $_SESSION['email']);
       $stmt->execute();
@@ -17,9 +16,9 @@ include '../src/config.php';
       } catch (\PDOException $e) {
       throw new \PDOException($e->getMessage(), (int) $e->getCode());
          }
-         if (isset($_SESSION['email'])) {
+         
           $user_id = ($user['id']); 
-        }  
+          
 
 		try {
 			$query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id, office_specs.conf_wifi, office_specs.conf_printer, favs.user_id, favs.office_id
@@ -49,7 +48,7 @@ include '../src/config.php';
     }
 
     
-
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -92,11 +91,16 @@ include '../src/config.php';
 
 <p class="h1 text-center my-3">Dina favoritkontor</p class="h1 align-center">
 <?php
-// IF NO FAVORITE OFFICES - SHOW THIS MESSAGE INSTEAD
-    if ($numrows == 0) {
-      echo "<div class='d-flex align-items-center justify-content-center' style='height:100%;'><p class='h3   my-3'>Du har inga favoritkontor ännu</p class='h1 align-center'></div>";
-      }
     
+// IF NO FAVORITE OFFICES - SHOW THIS MESSAGE INSTEAD
+    if (isset($_SESSION['email']) && $numrows == 0) {
+      echo "<div class='d-flex align-items-center justify-content-center' style='height:100%;'><p class='h3   my-3'>Du har inga favoritkontor ännu</p class='h1 align-center'></div>";
+      } else if (!isset($_SESSION['email'])) {
+      echo "<div class='d-flex align-items-center justify-content-center' style='height:100%;'><p class='h3   my-3'>Logga in för att se dina favoritkontor</p class='h1 align-center'></div>";
+      }
+
+
+      if (isset($_SESSION['email'])){
 ?>
 
 <?php foreach ($favs as $key => $favs) { ?>
@@ -121,9 +125,11 @@ include '../src/config.php';
       </svg> <?=($favs['rating'])?></p>
         </button>               
     <?php
-    $office_id = $favs['id'];
-    $fav_image = checkFavorite($user_id, $office_id, $conn);
-    $fav_image
+    if (isset($_SESSION['email'])) {  
+      $office_id = $favs['id'];
+      $fav_image = checkFavorite($user_id, $office_id, $conn);
+      $fav_image;
+	    }
     ?>
     </div>
       </div>
@@ -137,3 +143,4 @@ include '../src/config.php';
         </table>
     </div>  
 
+    <?php } ?>
