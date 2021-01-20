@@ -86,7 +86,7 @@ if( isset($_SESSION['email']) && !empty($_SESSION['email']) )
 <?=$loggedin?>
 
 <div class="list-group rounded-0">
-  <a href="#" class="list-group-item list-group-item-action border-0 mt-5 lol-auto border-radius-0">Settings</a>
+  <a href="#" class="list-group-item list-group-item-action border-0 mt-5 form-shadow border-radius-0">Settings</a>
   <a href="#" class="list-group-item list-group-item-action border">Policy and terms</a>
   <a href="#" class="list-group-item list-group-item-action border-bottom">Help</a>
   <a href="#" class="list-group-item list-group-item-action border-bottom">Sekretessinställningar</a>
@@ -108,7 +108,7 @@ else
 <?=$aboveNav?>
 
 <div class="list-group rounded-0">
-  <a href="#" class="list-group-item list-group-item-action border-0 mt-5 lol-auto border-radius-0">Settings</a>
+  <a href="#" class="list-group-item list-group-item-action border-0 mt-5 form-shadow border-radius-0">Settings</a>
   <a href="#" class="list-group-item list-group-item-action border">Policy and terms</a>
   <a href="#" class="list-group-item list-group-item-action border-bottom">Help</a>
   <a href="#" class="list-group-item list-group-item-action border-bottom">Sekretessinställningar</a>
