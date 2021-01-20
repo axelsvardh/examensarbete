@@ -61,13 +61,13 @@
           } catch(\PDOException $e) {
               throw new \PDOException($e->getMessage(), (int) $e->getCode());
           }
-          header('Location: profile.php');
+          header('Location: login.php?registerd');
           exit;
 
           if ($result) {
               $msg = '<div class="success_msg">Ditt konto är nu skapat</div>';
           } else {
-              $msg = '<div class="error_msg">Regisreringen misslyckades. Var snäll och försök igen senare!</div>';
+              $msg = '<div class="error_msg">Registreringen misslyckades. Var snäll och försök igen senare!</div>';
           }
       }
   }
@@ -93,7 +93,7 @@
             <form method="POST" action="#" class="form-reg">
             <h1 class="rubrik-center mt-3">Registrera dig här</h1>
             <div class="form-floating mb-3">
-                    <input type="text" class="form-control" id="floatingInput" name="first_name" placeholder="name@example.com">
+                    <input type="text" class="form-control" id="floatingInput" name="first_name" placeholder="name@example.com" value='<?=htmlentities($first_name)?>'>
                 <label for="floatingInput">First name</label>
                 </div>
                 <div class="form-floating mb-3">
@@ -117,7 +117,7 @@
                 <label for="floatingPassword">Confirm password</label>
                 </div>
                 <div class="btn btn-warning">
-                    <button class="btn btn-warning" type="submit" name="register" value="Registrera">Registrera</button>
+                    <input class="btn btn-warning" type="submit" name="register" value="Registrera">
                 </div>
             </form>
         </div>
