@@ -14,7 +14,9 @@ try {
   try {
     $query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id, offices.description, office_specs.conf_wifi,office_specs.conf_printer
     FROM offices
-    LEFT JOIN office_specs ON offices.id = office_specs.office_id;";
+    LEFT JOIN office_specs ON offices.id = office_specs.office_id
+    ORDER BY offices.office_name
+    ";
     $stmt = $conn->query($query);
     $office_specs = $stmt->fetchall();
     }   catch (\PDOException $e) {
@@ -58,6 +60,7 @@ try {
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../css/officelist.css">
+  <script src="https://www.w3schools.com/lib/w3.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script type="text/javascript">
     jQuery(document).ready(function($){
@@ -89,50 +92,75 @@ try {
 <body>
 <!--- HEADER INCLUDED NAVBAR --->
 <div class="headnav">
-<nav class="navbar navbar-light justify-content-around mb-4">
+<nav class="navbar navbar-light justify-content-around mb-4 pt-4">
   <form class="form-inline d-flex">
-    <input id="searchbar" class="form" type="search" placeholder="Sök" aria-label="Search">
+    <input type="text" class="form-control " id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
   </form>
 </nav>
 </div>
 <!--- HEADER INCLUDED NAVBAR END --->
-
+<div id="id01">
 <?php foreach ($office_specs as $key => $office) { ?>
-<div id="officecard" class="d-flex justify-content-center justify-content-lg-between mb-3">
-  <div class="card shadow" style="width: 21rem;">
-    <img class="card-img-top" src="<?=htmlentities($office['office_img'])?>" alt="">
-     <div class="card-body">
-      <h5 class="card-title"><a class="titellink" href="officespecs.php?id=<?=$office['id']?>"><?=($office['office_name'])?></a></h5>
-       <p class="card-text"><?=htmlentities($office['description'])?></p>
-       
+<section id="section">
+  <div id="officecard" class="d-flex justify-content-center justify-content-lg-between mb-3 office" >
+    <div class="card shadow" style="width: 21rem;">
+      <img class="card-img-top" src="<?=htmlentities($office['office_img'])?>" alt="">
+      <div class="card-body">
+        <h5 class="card-title" id="filter<?=$office['id']?>"><a class="titellink" href="officespecs.php?id=<?=$office['id']?>"><?=($office['office_name'])?></a></h5>
+        <p class="card-text"><?=htmlentities($office['description'])?></p>
+        
 
-<!--- CONF ICONS START --->
-<hr>
-<div class="d-flex justify-content-end">
-      <p class=""><?=($office['conf_wifi'])?></p>
-      <p class="p-2"><?=($office['conf_printer'])?></p>
+  <!--- CONF ICONS START --->
+  <hr>
+  <div class="d-flex justify-content-end">
+        <p class=""><?=($office['conf_wifi'])?></p>
+        <p class="p-2"><?=($office['conf_printer'])?></p>
+  </div>
+
+  <!--- CONF ICONS END --->
+          <div class="d-flex justify-content-between">
+              <p class="mt-1">
+              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#f29a01" class="bi bi-star-fill" viewBox="0 0 16 16">
+            <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
+              </svg> <?=($office['rating'])?></p>
+              
+              </button>               
+      <?php
+      if (isset($_SESSION['email'])) {  
+      $office_id = $office['id'];
+      $fav_image = checkFavorite($user_id, $office_id, $conn);
+      $fav_image;   
+    }
+      ?>
+      </div>
+        </div>
+      </div>
+    </div>  
+  </section>
+<?php } ?>
 </div>
 
-<!--- CONF ICONS END --->
-        <div class="d-flex justify-content-between">
-            <p class="mt-1">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#f29a01" class="bi bi-star-fill" viewBox="0 0 16 16">
-           <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
-            </svg> <?=($office['rating'])?></p>
-            
-            </button>               
-    <?php
-    if (isset($_SESSION['email'])) {  
-    $office_id = $office['id'];
-    $fav_image = checkFavorite($user_id, $office_id, $conn);
-    $fav_image;   
+<script>
+function myFunction() {
+  // Declare variables
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("id01");
+  tr = table.getElementsByTagName("section");
+  // Loop through all table rows, and hide those who don't match the search query
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("h5")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }
   }
-    ?>
-    </div>
-      </div>
-    </div>
-  </div>  
-<?php } ?>
-
+}
+</script>
 </body>
 </html>
