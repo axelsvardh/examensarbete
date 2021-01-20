@@ -99,7 +99,7 @@ include '../layout/bottomnav.php';
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input name="password" type="password" class="form-control" id="exampleInputPassword1">
               </div>
-              <button type="submit" name="doLogin" class="btn btn-warning">Submit</button>
+              <button type="submit" name="doLogin" class="btn btn-warning">Logga in</button>
             </form>
     </div>
 <br>
