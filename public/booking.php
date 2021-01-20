@@ -1,6 +1,5 @@
 <?php
 include '../layout/bottomnav.php';
-require '../src/dbconnect.php';
 include '../src/config.php';
 ?>
 

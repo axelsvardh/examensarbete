@@ -122,9 +122,11 @@ try {
             
             </button>               
     <?php
+    if (isset($_SESSION['email'])) {  
     $office_id = $office['id'];
     $fav_image = checkFavorite($user_id, $office_id, $conn);
-    $fav_image
+    $fav_image;   
+  }
     ?>
     </div>
       </div>
