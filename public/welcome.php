@@ -9,46 +9,59 @@ include '../src/config.php';
   <title>Welcome</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="../css/welcome.css">
+
+  </head>
 <body>
+  <div class="headintro"><p class="text-center h1">Officefinder</p></div>
+   <!--ARROWS--->
+   <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </a>
 
-<div class="container">
-  <div id="myCarousel" class="carousel slide" data-ride="carousel">
-    <!-- Indicators -->
-    <ol class="carousel-indicators">
-      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-      <li data-target="#myCarousel" data-slide-to="1"></li>
-      <li data-target="#myCarousel" data-slide-to="2"></li>
-    </ol>
 
-    <!-- Wrapper for slides -->
-    <div class="carousel-inner">
-      <div class="item active w-100 h-100">
-        <img src="https://images.unsplash.com/photo-1536924940846-227afb31e2a5?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1947&q=80" alt="Los Angeles" style="width:100%;">
-      </div>
 
-      <div class="item w-100 h-100">
-        <img src="https://images.unsplash.com/photo-1547826039-bfc35e0f1ea8?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1566&q=80" alt="Chicago" style="width:100%;">
-      </div>
-    
-      <div class="item w-100 h-100">
-        <img src="https://images.unsplash.com/photo-1515405295579-ba7b45403062?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1100&q=80" alt="New york" style="width:100%;">
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false" data-bs-touch="true">
+
+  <div class="carousel-inner">
+
+    <div class="carousel-item active" >
+    <div class="slide1"><h3 class="m-5">Välkommen till Officefinder. Ditt nya sätt att hitta kontor runt om i Sverige!</h3></div>
+      <div class="carousel-caption d-none d-md-block">
       </div>
     </div>
 
-    <!-- Left and right controls -->
-    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
-      <span class="glyphicon glyphicon-chevron-left"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="right carousel-control" href="#myCarousel" data-slide="next">
-      <span class="glyphicon glyphicon-chevron-right"></span>
-      <span class="sr-only">Next</span>
-    </a>
+    <div class="carousel-item">
+    <div class="slide2"><h3 class="m-5">Hos oss hittar du information om flera olika kontorshotell, allt för att hitta ett kontor som passar dig bäst.</h3></div>
+      <div class="carousel-caption d-none d-md-block">
+      </div>
+    </div>
+
+    <div class="carousel-item">
+    <div class="slide3"><h3 class="m-5">Börja med att lokalisera dig själv på kartan eller välj från vår lista av kontor. Klicka på denna knappen vid start sidan <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg></a>
+ </h3></div>
+      <div class="carousel-caption d-none d-md-block">
+      </div>
+    </div>
+
+    <div class="carousel-item">
+    <div class="slide4"><h3 class="m-5">Klicka igång direkt och hitta din nästa arbetsplats!</h3></div>
+    <a href="index.php"><button id="introbtn" class="btn btn-warning start-50 translate-middle position-absolute">klicka här</button></a>
+      <div class="carousel-caption d-none d-md-block">
+      </div>
+    </div>
+
+
   </div>
+ 
 </div>
 
 </body>

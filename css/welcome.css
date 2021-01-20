@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&display=swap');
+
+.slide1 p {
+  font-size: 20px;
+}
+.carousel-item {
+  margin-top: 250px !important;
+  margin-bottom: 250px !important;
+}
+body {
+  background-color: #f29a01;
+  font-family: 'Lato', sans-serif !important;
+  text-align: justify;
+}
+
+#carouselExampleDark {
+  background: url() no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+h3 {
+  /*text-shadow: 2px 1px grey;*/
+  color: black;
+}
+.slide4 a {
+  text-decoration: none;
+  color: black;
+}
+
+#introbtn {
+  text-align: center;
+}
+
+.headintro {
+}
