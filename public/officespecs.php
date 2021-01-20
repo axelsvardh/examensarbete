@@ -71,7 +71,7 @@ try {
     <p class=""><?=($office_specs['conf_wifi'])?> <?=($office_specs['conf_printer'])?> <?=($office_specs['conf_coffe'])?></p>
     
     </div>
-    <a id="cardnav" href="#" class="btn btn-primary">Boka</a>
+    <a id="cardnav" href="booking.php" class="btn btn-primary mb-5">Boka</a>
     </div>
     </div>
 </body>
