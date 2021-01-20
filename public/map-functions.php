@@ -74,7 +74,7 @@ function myMap() {
         lng = "<?=($officespecs['lng'])?>",
         {
         coords:{lat:parseFloat(lat),lng:parseFloat(lng)},
-        content:'<?=($officespecs['office_name'])?>'
+        content:'<h1 class="card-title"><a class="titellink" href="officespecs.php?id=<?=$officespecs['id']?>"><?=($officespecs['office_name'])?></a></h1>'
       },
       <?php } ?>
     ];
@@ -123,9 +123,8 @@ function myMap() {
 
     
   const locationButton = document.createElement("button");
-  locationButton.textContent = "Visa min position";
   locationButton.classList.add("custom-map-control-button", "btn", "btn-outline-primary", "geo-button");
-  map.controls[google.maps.ControlPosition.TOP_CENTER].push(locationButton);
+  map.controls[google.maps.ControlPosition.RIGHT_BOTTOM].push(locationButton);
   locationButton.addEventListener("click", () => {
     // Try HTML5 geolocation.
     if (navigator.geolocation) {
