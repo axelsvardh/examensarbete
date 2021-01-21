@@ -1,6 +1,6 @@
 <?php
   include '../src/config.php';
-  include '../layout/bottomnav.php';
+  include 'layout/bottomnav.php';
 
   $first_name  = '';
   $last_name   = '';

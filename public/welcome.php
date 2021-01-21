@@ -1,5 +1,5 @@
 <?php
-require '../src/dbconnect.php';
+include 'layout/bottomnav.php';
 include '../src/config.php';
 ?>
 
@@ -11,24 +11,26 @@ include '../src/config.php';
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="../css/welcome.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="css/welcome.css">
+
 
   </head>
 <body>
-  <div class="headintro"><p class="text-center h1">Officefinder</p></div>
+
    <!--ARROWS--->
-   <a class="carousel-control-prev" href="#carouselExampleDark" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
+   <a class="carousel-control-prev d-none" href="#carouselExampleDark" role="button" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon left" aria-hidden="true"></span>
+    <span class="visually-hidden left">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleDark" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
+  <a class="carousel-control-next d-none" href="#carouselExampleDark" role="button" data-bs-slide="next">
+    <span class="carousel-control-next-icon right" aria-hidden="true"></span>
+    <span class="visually-hidden right">Next</span>
   </a>
 
 
 
-<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false" data-bs-touch="true">
+<div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-wrap="false" data-bs-interval="false" data-bs-touch="true">
 
   <div class="carousel-inner">
 
@@ -64,14 +66,35 @@ include '../src/config.php';
  
 </div>
 
+<script >if (localStorage.getItem("visited")) {
+    window.location.href = "index.php";
+}
+localStorage.setItem("visited", "true");
+
+var carouselLength = $('.carousel-item').length - 1;
+
+// If there is more than one item
+if (carouselLength) {
+    $('.carousel-control-next').removeClass('d-none');
+}
+
+$('.carousel').on('slide.bs.carousel', function (e) {
+    // First one
+    if (e.to == 0) {
+        $('.carousel-control-prev').addClass('d-none');
+        $('.carousel-control-next').removeClass('d-none');
+    } // Last one
+    else if (e.to == carouselLength) {
+        $('.carousel-control-prev').removeClass('d-none');
+        $('.carousel-control-next').addClass('d-none');
+    } // The rest
+    else {
+        $('.carousel-control-prev').removeClass('d-none');
+        $('.carousel-control-next').removeClass('d-none');
+    }
+});
+</script>
 </body>
 </html>
 
-<script>if (localStorage.getItem("visited")) {
-    window.location.href = "index.php";
-}
-localStorage.setItem("visited", "true");</script>
 
-<?php
-include '../layout/bottomnav.php';
-?>
