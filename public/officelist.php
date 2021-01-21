@@ -94,7 +94,7 @@ try {
 <div class="headnav">
 <nav class="navbar navbar-light justify-content-around mb-4 pt-4">
   <form class="form-inline d-flex">
-    <input type="text" class="form-control " id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
+    <input type="text" class="form-control searchbar-style" id="myInput" onkeyup="myFunction()" placeholder="Search for names..">
   </form>
 </nav>
 </div>

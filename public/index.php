@@ -2,6 +2,7 @@
 include '../src/config.php';
 include '../layout/bottomnav.php';
 include 'map-functions.php';
+include '../layout/header.php';
 
 
 // try {
@@ -32,9 +33,6 @@ try {
   <link rel="stylesheet" href="css/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <link rel="stylesheet" href="../css/bottomnav.css">
-
-<img src="../img/my-location.png" alt="">
-
 
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <!-- <script src="https://unpkg.com/axios/dist/axios.min.js"></script> -->
@@ -71,7 +69,7 @@ try {
 </script>
   <title>Office finder</title>
 </head>
-<body>
+<body class="index-body">
 
 <!-- sökfunktion form -->
 <div class="input-group">
@@ -83,11 +81,11 @@ try {
   />
 </div>
 
-<div id="googleMap" style="width:100%;height:110%;"></div>
+<div id="googleMap" style="width:100%; height:100%;"></div>
   
 <!-- knapp på startsidan (visa lista) -->
 <!-- <div></div> -->
-<a href="officelist.php" class="list-btn"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+<a href="officelist.php" class="list-btn"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" class="bi bi-list-ul" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg></a>
   
   </body>

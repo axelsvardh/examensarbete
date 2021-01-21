@@ -8,23 +8,26 @@
 }
 
 body {
-  padding-bottom: 65px;
+}
+
+.index-body {
+  overflow: hidden;
 }
 
 .list-btn {
   position: absolute;
-  background-color: #eee;
-  border: 1px solid #eee;
+  background-color: white;
+  border: 1px solid white;
   box-shadow: 2px 3px 10px;
   width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  color: rgb(34, 34, 34);
+  color: rgb(117, 117, 117);
   border-radius: 100px;
   right: 0;
-  top: 70%;
+  top: 86%;
   margin-right: 10px;
 }
 
@@ -46,14 +49,18 @@ body {
   height: 40px;
   border-radius: 40px;
   width: 95%;
-  background-image: url(../img/loupe.png) no-repeat scroll 7px 7px;
   padding-left: 30px;
 }
 
-/* PROFIL CSS */
+/* HEADER CSS */
+.header-style {
+  background-color: #f29a01;
+  height: 10%;
+  text-align: center;
+  padding: 6%;
+}
 
 /* LOGIN CSS */
-
 .form-wrapper {
   margin: 10px;
 }
@@ -73,7 +80,7 @@ body {
   color: rgb(34, 34, 34);
   right: 10;
   margin-right: 10px;
-  top: 60%;
+  top: 69%;
   color: white;
   background-color: white !important;
 }
