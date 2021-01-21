@@ -33,5 +33,12 @@ h3 {
   text-align: center;
 }
 
-.headintro {
+/* HEADER CSS */
+.header-style * {
+  background-color: #ffffff;
+  height: 8%;
+  text-align: center;
+  padding: 5%;
+  font-weight: bold;
+  margin: 0;
 }

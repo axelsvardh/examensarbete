@@ -1,5 +1,5 @@
 <?php
-include '../layout/bottomnav.php';
+include 'layout/bottomnav.php';
 include '../src/config.php';
 
 
