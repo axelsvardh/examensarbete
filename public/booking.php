@@ -65,7 +65,7 @@ if (isset($_SESSION['email'])){
   </div>
   <div>
   <label for="validationDefault07" class="">Datum</label><br>
-  <input type="date" class="form-select" id="validationDefault07" name="date" required>
+  <input type="date" id="validationDefault07" name="date" required>
   </div>
   <div class="">
     <div class="form-check m-1">
@@ -115,7 +115,7 @@ if (isset($_SESSION['email'])){
   </div>
   <div>
   <label for="validationDefault07" class="">Datum</label><br>
-  <input type="date" class="form-select" id="validationDefault07" name="date" required>
+  <input type="date"  id="validationDefault07" name="date" required>
   </div>
   <div class="">
     <div class="form-check m-1">

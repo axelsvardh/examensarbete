@@ -22,6 +22,8 @@ function myMap() {
     zoom: 15,
     mapTypeId: 'roadmap',
     disableDefaultUI: true,
+    gestureHandling: "greedy",
+    zoomControl: false,
     
   })
   // Create the search box and link it to the UI element.
