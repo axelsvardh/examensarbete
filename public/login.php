@@ -83,7 +83,7 @@ include '../layout/bottomnav.php';
   <title>Office finder</title>
 </head>
 <body>
-<div class="wrapper">
+<div class="wrapper m-4">
     <div class="content1"> 
             <?=$msg?>
             <div class="login">
