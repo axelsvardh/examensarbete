@@ -1,3 +1,3 @@
 <header class="header-style">
-  <h1><b>OFFICE FINDER</b></h1>
+  <h1>OFFICE FINDER</h1>
 </header>

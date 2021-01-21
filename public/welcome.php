@@ -67,6 +67,10 @@ include '../src/config.php';
 </body>
 </html>
 
+<script>if (localStorage.getItem("visited")) {
+    window.location.href = "index.php";
+}
+localStorage.setItem("visited", "true");</script>
 
 <?php
 include '../layout/bottomnav.php';

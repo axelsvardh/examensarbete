@@ -26,3 +26,7 @@
 </a>
   </container>
 </nav>
+
+<?php
+include '../layout/header.php';
+?>

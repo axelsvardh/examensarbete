@@ -13,3 +13,7 @@ body {
 #botnavbar {
   display: table-column !important;
 }
+
+.navicon:hover {
+  color: #f29a01;
+}
