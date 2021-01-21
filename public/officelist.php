@@ -12,7 +12,7 @@ try {
   }
 
   try {
-    $query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id, offices.description, office_specs.conf_wifi,office_specs.conf_printer
+    $query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id, offices.description, office_specs.conf_wifi,office_specs.conf_printer,office_specs.room_type
     FROM offices
     LEFT JOIN office_specs ON offices.id = office_specs.office_id
     ORDER BY offices.office_name
@@ -107,7 +107,7 @@ try {
       <img class="card-img-top" src="<?=htmlentities($office['office_img'])?>" alt="">
       <div class="card-body">
         <h5 class="card-title" id="filter<?=$office['id']?>"><a class="titellink" href="officespecs.php?id=<?=$office['id']?>"><?=($office['office_name'])?></a></h5>
-        <p class="card-text"><?=htmlentities($office['description'])?></p>
+        <p class="card-text"><?=($office['room_type'])?></p>
         
 
   <!--- CONF ICONS START --->
@@ -120,7 +120,7 @@ try {
   <!--- CONF ICONS END --->
           <div class="d-flex justify-content-between">
               <p class="mt-1">
-              <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="#f29a01" class="bi bi-star-fill" viewBox="0 0 16 16">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="26" fill="#f29a01" class="bi bi-star-fill" viewBox="0 0 21 21">
             <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.283.95l-3.523 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"/>
               </svg> <?=($office['rating'])?></p>
               

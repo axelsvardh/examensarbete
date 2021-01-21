@@ -2,7 +2,7 @@
 
 body {
   font-family: 'Lato', sans-serif !important;
-  text-align: justify !important;
+  text-align: ;
   padding-bottom: 65px;
 }
 .street {
@@ -34,6 +34,6 @@ h2 {
 }
 
 #officeinfo {
-  text-align: justify;
+  text-align: ;
   letter-spacing: 1px;
 }

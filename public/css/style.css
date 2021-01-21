@@ -53,11 +53,13 @@ body {
 }
 
 /* HEADER CSS */
-.header-style {
+.header-style * {
   background-color: #f29a01;
-  height: 10%;
+  height: 8%;
   text-align: center;
-  padding: 6%;
+  padding: 5%;
+  font-weight: bold;
+  margin: 0;
 }
 
 /* LOGIN CSS */
@@ -120,4 +122,10 @@ body {
 
 .favicon {
   color: #f29a01;
+}
+
+a.titellink {
+  text-decoration: none !important;
+  color: #f29a01 !important;
+  font-size: 18px;
 }

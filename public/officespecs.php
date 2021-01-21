@@ -62,7 +62,7 @@ try {
     <div class="row">
     <div id="officeinfo" class="col-6">
     <p class="">Storlek: <?=($office_specs['conf_kvm'])?></p>
-    <p class="">Rumstyp: <?=($office_specs['room_type'])?></p>
+    <p class="">Rumstyp:<?=($office_specs['room_type'])?></p>
     <p class="">Platser lediga: <?=($office_specs['room_qty'])?></p>
     <br>
     </div>
