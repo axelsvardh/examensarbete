@@ -1,5 +1,5 @@
 <?php
-include '../layout/bottomnav.php';
+include 'layout/bottomnav.php';
 include '../src/config.php';
 
 if (isset($_SESSION['email'])){
@@ -26,6 +26,7 @@ if (isset($_SESSION['email'])){
   <link rel="stylesheet" href="//use.fontawesome.com/releases/v5.0.7/css/all.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
   <link rel="stylesheet" href="css/booking.css">
+  <link rel="stylesheet" href="css/style.css">
   <title>Booking Page</title>
 
 </head>

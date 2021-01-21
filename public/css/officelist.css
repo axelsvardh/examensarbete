@@ -60,3 +60,12 @@ h5 {
 #wifiicon {
   font-size: 1.7rem;
 }
+
+.header-style * {
+  background-color: #f29a01;
+  height: 8%;
+  text-align: center;
+  padding: 5%;
+  font-weight: bold;
+  margin: 0;
+}

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../css/bottomnav.css">
+<link rel="stylesheet" href="css/bottomnav.css">
 
 <nav class="navbar navbar-light bg-light fixed-bottom">
   <container class="container-fluid justify-content-around">
@@ -28,5 +28,5 @@
 </nav>
 
 <?php
-include '../layout/header.php';
+include 'layout/header.php';
 ?>
