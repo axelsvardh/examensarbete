@@ -55,9 +55,9 @@ body {
 /* HEADER CSS */
 .header-style * {
   background-color: #f29a01;
-  height: 8%;
+  height: 60px;
   text-align: center;
-  padding: 5%;
+  padding-top: 10px;
   font-weight: bold;
   margin: 0;
 }

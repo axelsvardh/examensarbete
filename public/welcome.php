@@ -35,19 +35,19 @@ include '../src/config.php';
   <div class="carousel-inner">
 
     <div class="carousel-item active" >
-    <div class="slide1"><h3 class="m-5">Välkommen till Officefinder. Ditt nya sätt att hitta kontor runt om i Sverige!</h3></div>
+    <div class="slide1"><h3 class="mx-5">Välkommen till Officefinder. Ditt nya sätt att hitta kontor runt om i Sverige!</h3></div>
       <div class="carousel-caption d-none d-md-block">
       </div>
     </div>
 
     <div class="carousel-item">
-    <div class="slide2"><h3 class="m-5">Hos oss hittar du information om flera olika kontorshotell, allt för att hitta ett kontor som passar dig bäst.</h3></div>
+    <div class="slide2"><h3 class="mx-5">Hos oss hittar du information om flera olika kontorshotell, allt för att hitta ett kontor som passar dig bäst.</h3></div>
       <div class="carousel-caption d-none d-md-block">
       </div>
     </div>
 
     <div class="carousel-item">
-    <div class="slide3"><h3 class="m-5">Börja med att lokalisera dig själv på kartan eller välj från vår lista av kontor. Klicka på denna knappen vid start sidan <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
+    <div class="slide3"><h3 class="mx-5">Börja med att lokalisera dig själv på kartan eller välj från vår lista av kontor. Klicka på denna knappen vid start sidan <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list-ul" viewBox="0 0 16 16">
   <path fill-rule="evenodd" d="M5 11.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zm-3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm0 4a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg></a>
  </h3></div>
       <div class="carousel-caption d-none d-md-block">
@@ -55,10 +55,9 @@ include '../src/config.php';
     </div>
 
     <div class="carousel-item">
-    <div class="slide4"><h3 class="m-5">Klicka igång direkt och hitta din nästa arbetsplats!</h3></div>
+    <div class="slide4"><h3 class="mx-5">Klicka igång direkt och hitta din nästa arbetsplats!</h3></div>
     <a href="index.php"><button id="introbtn" class="btn btn-warning start-50 translate-middle position-absolute">klicka här</button></a>
-      <div class="carousel-caption d-none d-md-block">
-      </div>
+      <div class="carousel-caption d-none d-md-block"></div>
     </div>
 
 
@@ -66,10 +65,11 @@ include '../src/config.php';
  
 </div>
 
-<script >if (localStorage.getItem("visited")) {
-    window.location.href = "index.php";
-}
-localStorage.setItem("visited", "true");
+<script >
+// if (localStorage.getItem("visited")) {
+//     window.location.href = "index.php";
+// }
+// localStorage.setItem("visited", "true");
 
 var carouselLength = $('.carousel-item').length - 1;
 
