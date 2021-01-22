@@ -18,8 +18,8 @@ try {
 
 function myMap() {
   const map = new google.maps.Map(document.getElementById('googleMap'), {
-    center: {lat: 59.3411845, lng: 18.0646734},
-    zoom: 15,
+    center: {lat: 59.332575, lng: 18.065205},
+    zoom: 13,
     mapTypeId: 'roadmap',
     disableDefaultUI: true,
     gestureHandling: "greedy",
@@ -90,7 +90,7 @@ function myMap() {
     // Add Marker Function
     
     function addMarker(props){
-      var image = 'img/office-building (2).png';
+      var image = 'img/office-building (4).png';
       var marker = new google.maps.Marker({
         position:new google.maps.LatLng(props.coords),
         map:map,
