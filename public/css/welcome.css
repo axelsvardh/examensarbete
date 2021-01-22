@@ -4,8 +4,7 @@
   font-size: 20px;
 }
 .carousel-item {
-  margin-top: 250px !important;
-  margin-bottom: 250px !important;
+  margin-top: 37vh !important;
 }
 body {
   background-color: #f29a01;
@@ -31,14 +30,19 @@ h3 {
 
 #introbtn {
   text-align: center;
+  top: 15vh;
 }
 
 /* HEADER CSS */
 .header-style * {
   background-color: #ffffff;
-  height: 8%;
+  height: 60px;
   text-align: center;
-  padding: 5%;
+  padding-top: 10px;
   font-weight: bold;
   margin: 0;
+}
+
+.carousel-inner {
+  height: 90vh;
 }
