@@ -21,7 +21,7 @@ if (isset($_SESSION['email'])) {
           
 
 		try {
-			$query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id,office_specs.conf_wifi, office_specs.conf_printer, favs.user_id, favs.office_id, offices.description
+			$query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id,office_specs.conf_wifi, office_specs.conf_printer, favs.user_id, favs.office_id, offices.description, office_specs.room_type
 			FROM ((offices
 			INNER JOIN office_specs ON offices.id = office_specs.office_id)
       INNER JOIN favs ON offices.id = favs.office_id)
@@ -109,7 +109,7 @@ if (isset($_SESSION['email'])) {
     <img class="card-img-top" src="<?=htmlentities($favs['office_img'])?>" alt="">
      <div class="card-body">
       <h5 class="card-title"><a class="titellink" href="officespecs.php?id=<?=$favs['id']?>"><?=($favs['office_name'])?></a></h5>
-      <p class=""><?=($offices['description'])?></p>
+      <p class=""><?=($favs['room_type'])?></p>
 
 
        

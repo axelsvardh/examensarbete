@@ -12,7 +12,7 @@ try {
   }
 
   try {
-    $query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id, offices.description, office_specs.conf_wifi,office_specs.conf_printer,office_specs.room_type
+    $query = "SELECT offices.office_name, office_specs.rating, offices.office_img, offices.id, offices.description, office_specs.conf_wifi, office_specs.conf_coffe, office_specs.conf_printer,office_specs.room_type
     FROM offices
     LEFT JOIN office_specs ON offices.id = office_specs.office_id
     ORDER BY offices.office_name
@@ -115,6 +115,7 @@ try {
   <div class="d-flex justify-content-end">
         <p class=""><?=($office['conf_wifi'])?></p>
         <p class="p-2"><?=($office['conf_printer'])?></p>
+        <p class="py-2 ps-1"><?=($office['conf_coffe'])?></p>
   </div>
 
   <!--- CONF ICONS END --->
