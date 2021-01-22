@@ -104,7 +104,7 @@ include 'layout/bottomnav.php';
     </div>
 <br>
     <div class="content2">
-        <h1>Registera dig här</h1>
+        <h3>Inget konto? Registera dig här</h3>
         <form action="reg.php" method="POST">
           <button type="submit" class="btn btn-warning">Registera</button>
         </form>

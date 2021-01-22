@@ -21,7 +21,7 @@ if (isset($_SESSION['email'])) {
     $aboveNav = "<a href='logout.php' class='list-group-item list-group-item-action border-0'>Logga ut</a>";
     $loggedin = "<p class='m-4'>Hitta kontoret just för dig</p>";
 } else {
-    $aboveNav = "<a href='reg.php' class='btn btn-warning btn-md ms-4'>Registrera dig</a>";
+    $aboveNav = "<a href='reg.php' class='btn profile-btn btn-md ms-4'>Registrera dig</a>";
     $loggedin = "<p class='m-4'>Logga in för att hitta ditt nästa kontor</p>";
 }
 
@@ -103,7 +103,7 @@ else
 
 <?=$loggedin?>
 <div class="d-grid">
-  <a href="login.php" class="btn btn-warning btn-lg m-4">Logga in</a>
+  <a href="login.php" class="btn btn-lg m-4 profile-btn">Logga in</a>
 </div>
 <?=$aboveNav?>
 
